@@ -43,8 +43,10 @@ Dalam pengerjaan wikipedia scrapper ini ada beberapa asumsi,
     ```
     sh run_scrapper.sh -p "Indonesia Raya" -u http://localhost:9919
     ```
-    maka akan keluar file bernama `Indonesia Raya_%Y_%m_%d_%H_%M_%S.json` dalam direktori yang sama
+    maka akan keluar file bernama `indonesia_raya_%Y_%m_%d_%H_%M_%S.json` dalam direktori yang sama
     ![phrase_Search_result](img/phrase_search_result.png "phrase_search_result")
+
+    dengan `%Y_%m_%d_%H_%M_%S` menyatakan waktu scrapping selesai, sebagai contoh jika scrapping selesai pada tanggal 20 Mei 2024 20:10:30, maka formatnya menjadi `indonesia_raya_2024_05_20_20_10_30.json`
 
 3. Jika ingin mendapatkan informasi konten dari kumpulan link yang diberikan (`URL_LINKS`), pastikan `URL_LINKS` mengikuti format berikut:
     * Jika hanya 1 URL wikipedia, maka "{URL_LINK_1},"
@@ -65,7 +67,7 @@ Dalam pengerjaan wikipedia scrapper ini ada beberapa asumsi,
     sh run_scrapper.sh -l "https://en.wikipedia.org/wiki/Proxy_server,https://en.wikipedia.org/wiki/Transport_Layer_Security", -u http://localhost:9919
     ```
 
-    maka apabila proses ini dibatalkan atau telah selesai, akan keluar file bernama `Proxy_server.json` sebagai berikut:
+    maka apabila proses ini dibatalkan atau telah selesai, akan keluar file bernama `proxy_server.json` (penamaan mengikuti link pertama yang discrape pada argumen `-l` di `run_scrapper.sh`) sebagai berikut:
     ![page_info_result_1](img/page_info_result_1.png "page_info_result_1")
     
     beserta URL yang relevan (jika ada)

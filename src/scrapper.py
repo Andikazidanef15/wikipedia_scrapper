@@ -67,7 +67,8 @@ class WikipediaScrapper:
             # Get current datetime
             current_date = datetime.now()
             date_format = current_date.strftime('%Y_%m_%d_%H_%M_%S')
-            self.save_metadata(phrase_metadata, f'{phrase}_{date_format}.json')
+            file_format = phrase.replace(' ','_').lower()
+            self.save_metadata(phrase_metadata, f'{file_format}_{date_format}.json')
     
     def get_page_information(self, link_list, result_list:list=[], visited_link_list:list=[]):
         try:
@@ -139,7 +140,7 @@ class WikipediaScrapper:
 
         finally:
             # Save metadata
-            filename = visited_link_list[0].split('/')[-1]
+            filename = visited_link_list[0].split('/')[-1].lower()
             self.save_metadata(result_list, f'{filename}.json')
     
     def save_metadata(self, file:list, file_path:str):
