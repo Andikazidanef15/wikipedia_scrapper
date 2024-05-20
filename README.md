@@ -10,13 +10,12 @@ Dalam pengerjaan wikipedia scrapper ini ada beberapa asumsi,
 ## Petunjuk Instalasi
 1. Download Chromedriver dengan mengikuti petunjuk pada laman berikut ([How to download Chromedriver for Selenium](https://www.automationtestinghub.com/download-chrome-driver/)), pastikan versi Chromedriver sesuai dengan versi Google Chrome di komputer.
 2. Simpan file `chromedriver.exe` dalam folder `browser/`
-3. Di dalam file `.env` terdapat variabel `PROXY_URL=http://localhost:9919`, nilai ini dapat diubah ke link proxy yang diinginkan. Ini ditujukan untuk menjalankan kode `proxy_server.py`
-4. Buat Python *environment* baru (bisa menggunakan *Anaconda* atau *venv*) lalu install *packages* yang diperlukan pada file `requirements.txt` dengan menjalankan kode berikut:
+3. Buat Python *environment* baru (bisa menggunakan *Anaconda* atau *venv*) lalu install *packages* yang diperlukan pada file `requirements.txt` dengan menjalankan kode berikut:
     ```pip install -r requirements.txt```
 
 ## Petunjuk Penggunaan Web Scrapper
-1. Jalankan kode di bawah dalam terminal
-    ```python proxy_server.py```
+1. Buat proxy server dengan menjalankan kode di bawah: 
+    ```python proxy_server.py -u http://localhost:9919```
     Jika berhasil dijalankan, maka akan keluar output sebagai berikut:
     ![proxy_server_success](img/proxy_server_success.png "proxy_server_success")
 
@@ -25,7 +24,6 @@ Dalam pengerjaan wikipedia scrapper ini ada beberapa asumsi,
     maka akan keluar hasil sebagai berikut
     ![curl_success](img/curl_success.png "curl_success")
 
-    Pastikan bahwa proxy URL yang diberikan pada *command* curl sesuai dengan nilai `PROXY_URL` dalam file `.env`
 2. Jika ingin mendapatkan hasil pencarian {phrase}, maka jalankan kode berikut dalam terminal
     * Apabila tidak ingin menggunakan proxy URL, maka gunakan kode berikut:
     ```sh run_scrapper.sh -p {phrase}```

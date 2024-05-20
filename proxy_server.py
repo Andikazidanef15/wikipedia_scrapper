@@ -2,13 +2,12 @@ import http.server
 import socketserver
 import socket
 import urllib.parse
+import argparse
 import requests
 import select
 
 from config.env import getenv
 
-PROXY_URL = getenv('PROXY_URL', default='http://localhost:9919')
-PORT = int(PROXY_URL.split(':')[-1])
 
 class ProxyHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
     def do_CONNECT(self):
@@ -74,6 +73,14 @@ class ProxyHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
         except requests.RequestException as e:
             self.send_error(502, f"Bad gateway: {e}")
 
-with socketserver.ThreadingTCPServer(("localhost", PORT), ProxyHTTPRequestHandler) as httpd:
-    print(f"Serving at port {PORT}")
-    httpd.serve_forever()
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Wikipedia scrapper for phrase search and page information')
+    parser.add_argument("--proxy_url", "-u", type=str, default='http://localhost:9919', help='Proxy URL to connect with Wikipedia website')
+    args = parser.parse_args()
+
+    PROXY_URL = args.proxy_url
+    PORT = int(PROXY_URL.split(':')[-1])
+
+    with socketserver.ThreadingTCPServer(("localhost", PORT), ProxyHTTPRequestHandler) as httpd:
+        print(f"Serving at port {PORT}")
+        httpd.serve_forever()
