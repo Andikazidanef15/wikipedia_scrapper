@@ -1,0 +1,4 @@
+requests==2.31.0
+concurrent_log_handler==0.9.24
+selenium==4.17.2
+python-dotenv==1.0.0
