@@ -64,7 +64,7 @@ Dalam pengerjaan wikipedia scrapper ini ada beberapa asumsi,
     ```
     * Sebagai contoh, setelah menjalankan kode ini dalam terminal:
     ```
-    sh run_scrapper.sh -l "https://en.wikipedia.org/wiki/Proxy_server,https://en.wikipedia.org/wiki/Transport_Layer_Security", -u http://localhost:9919
+    sh run_scrapper.sh -l "https://en.wikipedia.org/wiki/Proxy_server,https://en.wikipedia.org/wiki/Transport_Layer_Security" -u http://localhost:9919
     ```
 
     maka apabila proses ini dibatalkan atau telah selesai, akan keluar file bernama `proxy_server.json` (penamaan mengikuti link pertama yang discrape pada argumen `-l` di `run_scrapper.sh`) sebagai berikut:
