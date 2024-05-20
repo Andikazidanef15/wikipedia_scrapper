@@ -1,6 +1,7 @@
 import time
 import json
 import logging
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -18,7 +19,10 @@ class WikipediaScrapper:
             chrome_options.add_argument(f"--proxy-server={proxy_server}")
 
         # Path to your ChromeDriver
-        self.driver = webdriver.Chrome(options=chrome_options)
+        service = Service('browser/chromedriver.exe')
+
+        # Define driver object
+        self.driver = webdriver.Chrome(service=service, options=chrome_options)
 
         # Create logger
         self.logger = logging.getLogger(__name__)
@@ -60,7 +64,10 @@ class WikipediaScrapper:
 
         # Save metadata
         if save_metadata:
-            self.save_metadata(phrase_metadata, f'{phrase}.json')
+            # Get current datetime
+            current_date = datetime.now()
+            date_format = current_date.strftime('%Y_%m_%d_%H_%M_%S')
+            self.save_metadata(phrase_metadata, f'{phrase}_{date_format}.json')
     
     def get_page_information(self, link_list, result_list:list=[], visited_link_list:list=[]):
         try:
@@ -126,7 +133,11 @@ class WikipediaScrapper:
 
         except KeyboardInterrupt as e:
             self.logger.info('Keyboard interrupted, saving current metadata')
-            
+        
+        except Exception as e:
+            self.logger.info(f'Error occurred: {e}')
+
+        finally:
             # Save metadata
             filename = visited_link_list[0].split('/')[-1]
             self.save_metadata(result_list, f'{filename}.json')

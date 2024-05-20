@@ -41,6 +41,7 @@ def main():
         proxy_url = args.proxy_url
         phrase = args.phrase
         links = args.links.split(',')
+        links = [link.strip() for link in links]
         
         if phrase != '':
             # Define wikipedia scrapper

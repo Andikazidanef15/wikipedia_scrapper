@@ -7,6 +7,8 @@ import select
 
 from config.env import getenv
 
+PROXY_URL = getenv('PROXY_URL', default='http://localhost:9919')
+PORT = int(PROXY_URL.split(':')[-1])
 
 class ProxyHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
     def do_CONNECT(self):
@@ -71,9 +73,6 @@ class ProxyHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(response.content)
         except requests.RequestException as e:
             self.send_error(502, f"Bad gateway: {e}")
-
-PROXY_URL = getenv('PROXY_URL', default='http://localhost:9919')
-PORT = int(PROXY_URL.split(':')[-1])
 
 with socketserver.ThreadingTCPServer(("localhost", PORT), ProxyHTTPRequestHandler) as httpd:
     print(f"Serving at port {PORT}")

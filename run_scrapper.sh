@@ -50,7 +50,7 @@ done
 if [ -z "$u_value" ]; then
     echo "Parameter for -u is an empty string, we will not use any proxy link"
     # Check if l is an empty string
-    if [ -z "$l_value"]; then
+    if [ -z "$l_value" ]; then
         echo "Parameter for -l is an empty string, we will not scrape wikipedia page"
 
         # Run scrapper for phrase search
@@ -64,7 +64,7 @@ else
     echo "Parameter for -u: $u_value, will use the proxy link"
 
     # Check if l is an empty string
-    if [ -z "$l_value"]; then
+    if [ -z "$l_value" ]; then
         echo "Parameter for -l is an empty string, we will not scrape wikipedia page"
 
         # Run scrapper for phrase search
