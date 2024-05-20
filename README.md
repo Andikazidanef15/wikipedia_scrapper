@@ -51,7 +51,7 @@ Dalam pengerjaan wikipedia scrapper ini ada beberapa asumsi,
 3. Jika ingin mendapatkan informasi konten dari kumpulan link yang diberikan (`URL_LINKS`), pastikan `URL_LINKS` mengikuti format berikut:
     * Jika hanya 1 URL wikipedia, maka "{URL_LINK_1}"
     * Jika lebih dari 1 URL wikipedia, maka "{URL_LINK_1},{URL_LINK_2},{URL_LINK_3}"
-    * Sebagai contoh, "https://en.wikipedia.org/wiki/Proxy_server,https://en.wikipedia.org/wiki/Transport_Layer_Security,"
+    * Sebagai contoh, "https://en.wikipedia.org/wiki/Proxy_server,https://en.wikipedia.org/wiki/Transport_Layer_Security"
 
     Apabila format sudah sesuai, maka jalankan kode berikut dalam terminal
     * Apabila tidak ingin menggunakan proxy URL, maka gunakan kode berikut:
