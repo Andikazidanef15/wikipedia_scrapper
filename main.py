@@ -53,7 +53,7 @@ def main():
             # Quit browser
             scrapper.exit_browser()
         
-        if links != ['']:
+        if links != []:
             # Define wikipedia scrapper
             scrapper = WikipediaScrapper(proxy_url)
 

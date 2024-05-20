@@ -28,7 +28,7 @@ class WikipediaScrapper:
         self.logger = logging.getLogger(__name__)
     
     def get_phrase_information(self, phrase:str, save_metadata:bool=True):
-        self.logger.info(f'Get {phrase} phrase information from WikiPedia')
+        self.logger.info(f'Get {phrase} phrase information from Wikipedia')
 
         # Replace space with + sign
         search_text = phrase.replace(' ', '+')
